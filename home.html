@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div class="pageholder">
+        <div class="titleholder">
+        <div class="title"><i class="fas fa-compass mr-2"></i> Home </div>
+    </div>
+        <h1>Kingston Bike Safety Map</h1>
+  <p>Welcome to the Kingston Bike Safety Map, a website developed by <em>Group 796-B</em>!</p>
+    <h2>Account</h2>
+    <p> <a class="title3 mr-4">Log in</a> or Create an account to save your biking routes and comment on the safety of roads! </p>
+  <h2>Interactive Map</h2>
+    <p>View the  <a href="{% url 'map'%}" class="title3 mr-4">Interactive Map of Kingston </a> that displays the safety of each road segment!</p>
+    </div>
+
+{% endblock %}

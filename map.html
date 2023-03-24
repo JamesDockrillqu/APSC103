@@ -1,0 +1,58 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+
+<script>
+    let map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            mapId: "48c2591842a85608",
+            center: { lat: 44.25, lng: -76.55 },
+            zoom: 12,
+        })
+        const bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
+    }
+    window.initMap = initMap;
+
+</script>
+
+<div class="pageholder">
+    <div class="titleholder">
+        <div class="title"><i class="fas fa-compass mr-2"></i> Kingston Bike Safety Map </div>
+
+        <div class = "title2"><label for="toggle_colours">Toggle Colours:</label></div>
+        <select name="toggle_colours" id="toggle_colours">
+            <option value="red_roads">Red</option>
+            <option value="orange_roads">Orange</option>
+            <option value="yellow_roads">Yellow</option>
+            <option value="green_roads">Green</option>
+            <option value="darkGreen_roads">Dark Green</option>
+        </select>
+
+        <div class = "title2"><label for="ratings">Ratings:</label></div>
+         <select name="ratings" id="ratings">
+             <option value="rate_roads">Rate Roads</option>
+             <option value="report_incident">Report Incident</option>
+             <option value="Help">Help</option>
+         </select>
+
+        <a href="{% url 'register'%}" class="title"><i class ="far fa-user-circle"></i></a>
+
+
+    </div>
+
+    <div class="linkholder">
+        <div class="mapholder">
+            <div id="map"> </div>
+            <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTH1vnJFZhkjruhDjAY3Cj3VO9Orqf3cE&callback=initMap&v=weekly"
+            defer
+            ></script>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
