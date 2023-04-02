@@ -3,36 +3,93 @@
 {% block content %}
 
 
-<body>
-    <h1 class="titleformatting"> -- Ratings -- </h1>
-</body>
-<div class="imageface">
-    <img src="{% static 'faces.jpg' %}" style="width:700px; height:120px" />
-</div>
-<div class="slidecontainer">
-    <input type="range" min="1" max="5" value="2.5" class="slider" id="myRange">
-    <div class="ratingtext">
-        <p> - Rating Level: <span id="demo"></span> - </p>
-    </div>
-</div>
-
-<div>
-    <p class="commenttitle"> Any other comments?</p>
-    <br>
-    <textarea class="commentbox" rows="4" cols="50" name="comment" form="usrform">
-    Enter text here...</textarea>
-    <div class="submit">
-        <form action="/action_page.php" id="usrform">
-            <input type="submit">
-        </form>
+<div class="pageholder">
+    <div class="titleholder">
+        <div class="ratingstitle1"><i class="fas fa-compass mr-2"></i> Kingston Bike Safety Map </div>
+        <div class="ratingstitle2"> Map </div>
+        <div class="ratingstitle3"> Report Incident </div>
+        <div class="ratingstitle4"> Help </div>
+        <div class="ratingsusericon"><i class="far fa-user-circle"></i></div>
     </div>
 
-</div>
+    <div class="ratingstitle6">
+        <h1> - Rating - </h1>
+    </div>
 
-<script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
+    <div class="slidecontainer">
+        <div class="ratingstitle5"><p>Level of Traffic</p></div>
+        <div class="ratingssmiley"><i class="far fa-frown"></i><i id="p1" class="far fa-smile"></i></div>
+        <input type="range" min="1" max="5" value="2.5" class="slider" id="myRange1">
+        <div class="ratingtext">
+            <p> - Rating Level: <span id="demo1"></span> - </p>
+        </div>
+    </div>
+
+    <div class="slidecontainer">
+        <div class="ratingstitle5"><p>Road Condition</p></div>
+        <div class="ratingssmiley"><i class="far fa-frown"></i><i id="p1" class="far fa-smile"></i></div>
+        <input type="range" min="1" max="5" value="2.5" class="slider" id="myRange2">
+        <div class="ratingtext">
+            <p> - Rating Level: <span id="demo2"></span> - </p>
+        </div>
+    </div>
+
+    <div class="slidecontainer">
+        <div class="ratingstitle5"><p>Accessibility</p></div>
+        <div class="ratingssmiley"><i class="far fa-frown"></i><i id="p1" class="far fa-smile"></i></div>
+        <input type="range" min="1" max="5" value="2.5" class="slider" id="myRange3">
+        <div class="ratingtext">
+            <p> - Rating Level: <span id="demo3"></span> - </p>
+        </div>
+    </div>
+
+    <div>
+        <div class="submit">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> Are There Bike Lanes?</label><br>
+        </div>
+        <p class="commenttitle"> Any other comments?</p>
+        <br>
+        <textarea class="commentbox" rows="4" cols="50" name="comment" form="usrform">   Enter text here...</textarea>
+        <div class="submit">
+            <form action="/action_page.php" id="usrform, vehicle1">
+                <input type="submit">
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        var slider1 = document.getElementById("myRange1");
+        var output1 = document.getElementById("demo1");
+        output1.innerHTML = slider1.value;
+
+        slider1.oninput = function () {
+            output1.innerHTML = this.value;
+        }
+    </script>
+
+    <script>
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo2");
+        output2.innerHTML = slider2.value;
+
+        slider2.oninput = function () {
+            output2.innerHTML = this.value;
+        }
+    </script>
+
+    <script>
+        var slider3 = document.getElementById("myRange3");
+        var output3 = document.getElementById("demo3");
+        output3.innerHTML = slider2.value;
+
+        slider3.oninput = function () {
+            output3.innerHTML = this.value;
+        }
+    </script>
+    {% endblock %}
+
 
     slider.oninput = function () {
         output.innerHTML = this.value;
