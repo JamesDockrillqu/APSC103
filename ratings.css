@@ -1,3 +1,135 @@
+#p1 { text-indent: 2250%; }
+#p2 { text-indent: 50%; }
+
+.pageholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ratingstitle1 {
+    color: white;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ratingstitle2 {
+    font-family: 'Segoe UI';
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ratingstitle3 {
+    font-family: 'Segoe UI';
+    color: white;
+    margin-left: auto;
+    margin-right: 400px;
+}
+
+.ratingstitle4 {
+    font-family: 'Segoe UI';
+    color: white;
+    margin-right: 50px;
+}
+
+.ratingstitle5 {
+    font-family: 'Segoe UI';
+    text-decoration: underline;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: -75px;
+}
+
+.ratingstitle6 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-family: 'Segoe UI';
+    font-weight: bolder;
+}
+
+.ratingsusericon {
+    color: white;
+    font-size: 40px;
+    margin-right: 15px;
+}
+
+.ratingssmiley {
+    color: black;
+    font-size: 50px;
+     margin-top: 50px;
+
+}
+
+.ratingstitle2:hover {
+    color: dimgrey;
+}
+
+.ratingstitle3:hover {
+    color: dimgrey;
+}
+
+.ratingstitle4:hover {
+    color: dimgrey;
+}
+
+.ratingsusericon:hover {
+    color: dimgray;
+}
+
+.titleholder,
+.linkholder {
+    display: flex;
+    margin-top: 10px;
+    width: 98%;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.ourbutton {
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 80);
+    color: white
+}
+
+    .ourbutton:hover {
+        margin-right: 10px;
+        background-color: rgb(142, 142, 142);
+        color: white
+    }
+
+.titleholder {
+    display: flex;
+    justify-content: space-between;
+    background-color: #Bf2447;
+    align-items: center;
+    height: 50px;
+}
+
+.linkholder {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+    justify-content: space-around;
+}
+
+.linkbox {
+    display: flex;
+    width: 20%;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+}
+
 .titleformatting {
     font-weight: bold;
     font-size: 50px;
@@ -8,14 +140,14 @@
 }
 
 .ratingtext {
-    font-family: Arial;
-    font-size: 25px;
+    font-family: 'Segoe UI';
+    font-size: 15px;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .commenttitle {
-    font-family: Arial;
+    font-family: 'Segoe UI';
     font-size: 25px;
     text-align: center;
     margin-top: 20px;
@@ -42,7 +174,7 @@
 
 .slidecontainer {
     width: 80%; /* Width of the outside container */
-    margin-top: 100px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -53,7 +185,7 @@
     appearance: none;
     width: 100%; /* Full-width */
     height: 35px; /* Specified height */
-    border-radius: 20px;
+    border-radius: 15px;
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
