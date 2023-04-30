@@ -2,26 +2,116 @@
 {% block content %}
 {% load static %}
 
-<script>
+    <script>
+
+    const KingstonBounds = {
+
+        north: 44.40,
+        south: 44.20,
+        east: -76.20,
+        west: -76.70,
+
+    }
+
     let map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            mapId: "48c2591842a85608",
-            center: { lat: 44.25, lng: -76.55 },
+            center: {lat: 44.25, lng: -76.55},
+            restriction: {
+                latLngBounds: KingstonBounds,
+                strictBounds: false,
+            },
             zoom: 12,
+            styles: [
+                {
+                    featureType: "administrative",
+                    elementType: "labels",
+                    stylers: [{visibility: "off"}]
+                },
+                {
+                    featureType: "landscape",
+                    elementType: "labels",
+                    stylers: [{visibility: "off"}]
+                },
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [{visibility: "off"}]
+                },
+                {
+                    featureType: "transit",
+                    elementType: "labels",
+                    stylers: [{visibility: "off"}]
+                },
+                {
+                    featureType: "water",
+                    elementType: "labels",
+                    stylers: [{visibility: "off"}]
+                },
+            ],
         })
-        const bikeLayer = new google.maps.BicyclingLayer();
-        bikeLayer.setMap(map);
+        var tileLayer = new google.maps.ImageMapType({
+            getTileUrl: function (coord, zoom) {
+                return "https://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+            },
+            tileSize: new google.maps.Size(256, 256),
+            name: "OpenStreetMap",
+            maxZoom: 18
+        });
+        map.mapTypes.set('OSM', tileLayer);
+        map.setMapTypeId('OSM');
+
+        let geojsonLayer = new google.maps.Data();
+        geojsonLayer.loadGeoJson('C:/Users/mateo/locallibrary/catalog/templates/roads-segments.geojson');
+
+        var earlCoords = [
+            {lat: 44.22976, lng: -76.49999},
+            {lat: 44.22977, lng: -76.49960},
+            {lat: 44.22978, lng: -76.49928},
+            {lat: 44.22979, lng: -76.49889},
+            {lat: 44.22980, lng: -76.49855},
+            ];
+
+        var albertCoords = [
+            {lat: 44.22972, lng: -76.50003},
+            {lat: 44.22948, lng: -76.50001},
+            {lat: 44.22930, lng: -76.50000},
+            {lat: 44.22914, lng: -76.49998},
+            {lat: 44.22869, lng: -76.49994},
+            {lat: 44.22842, lng: -76.49987},
+            {lat: 44.22764, lng: -76.49981},
+            {lat: 44.22736, lng: -76.49978},
+        ]
+            var unsafe = new google.maps.Polygon({
+                paths: earlCoords,
+                strokeColor: '#FF3535',
+                strokeOpacity: 0.8,
+                strokeWeight: 5,
+                fillColor: '#FF3535',
+                fillOpacity: 0.5
+            });
+            var safe = new google.maps.Polygon({
+                paths: albertCoords,
+                strokeColor: '#5E9453',
+                strokeOpacity: 0.8,
+                strokeWeight: 5,
+                fillColor: '#5E9453',
+                fillOpacity: 0.5
+            });
+
+            unsafe.setMap(map);
+            safe.setMap(map);
+        
     }
     window.initMap = initMap;
 
-</script>
+    </script>
 
 <div class="pageholder">
     <div class="titleholder">
-        <div class="title"><i class="fas fa-compass mr-2"></i> Kingston Bike Safety Map </div>
+        <div class="title"> <img src="https://obesitycanada.ca/wp-content/uploads/2018/03/Queens-University-Logo.png" alt="Queens Logo">  Kingston Bike Safety Map </div>
 
-        <div class = "title2"><label for="toggle_colours">Toggle Colours:</label></div>
+        <div class = "title"><label for="toggle_colours">Toggle Colours:</label></div>
         <select name="toggle_colours" id="toggle_colours">
             <option value="red_roads">Red</option>
             <option value="orange_roads">Orange</option>
@@ -30,17 +120,13 @@
             <option value="darkGreen_roads">Dark Green</option>
         </select>
 
-        <div class = "title2"><label for="ratings">Ratings:</label></div>
-         <select name="ratings" id="ratings">
-             <option value="rate_roads">Rate Roads</option>
-             <option value="report_incident">Report Incident</option>
-             <option value="Help">Help</option>
-         </select>
+        <div class = "title"> <a href="{% url 'ratings'%}" class="title"> Rate a Road </a> </div>
 
         <a href="{% url 'register'%}" class="title"><i class ="far fa-user-circle"></i></a>
 
 
     </div>
+
 
     <div class="linkholder">
         <div class="mapholder">
@@ -49,10 +135,9 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTH1vnJFZhkjruhDjAY3Cj3VO9Orqf3cE&callback=initMap&v=weekly"
             defer
             ></script>
+
         </div>
     </div>
 </div>
-
-
 
 {% endblock content %}
